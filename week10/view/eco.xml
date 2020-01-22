@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!-- stating this is an xml file-->
+<rss version="2.0"> <!-- states this is rss and the version-->
+<channel><!-- where the data is stored -->
+  <title>Eco sustainible clothes and more RSS feed</title> 
+  <description>An RSS feed dedicated to articles about clothes beneficial to the environment</description> 
+  <link>https://mayar.abertay.ac.uk/~1704097/306/week10/view/displayallItems.php</link>
+  <lastBuildDate>Mon, 11 Nov 2019 00:01:00 +0000 </lastBuildDate>
+  <pubDate>Mon, 11 Nov 2019 00:01:00 +0000 </pubDate>
+
+  <item>
+    <title>12 swimwear labels to know before summer 2019</title>
+    <description>introducing summer</description>
+    <link>https://mayar.abertay.ac.uk/~1704097/306/week5/view/displayArticle.php?ID=9</link>
+    <guid>id one</guid>
+    <pubDate>Mon, 06 Sep 2009 16:45:00 +0000 </pubDate>
+  </item>
+  
+  <item>
+    <title>Is buying eco worth it?</title>
+    <description>Maybe this will make you want to buy eco</description>
+    <link>https://mayar.abertay.ac.uk/~1704097/306/week5/view/displayArticle.php?ID=5</link>
+    <guid>id two</guid>
+    <pubDate>Mon, 10 Sep 2017 16:45:00 +0000 </pubDate>
+  </item>
+  
+  <item>
+    <title>Why organic cotton is sustainible?</title>
+    <description>The cotton industry revolutionised</description>
+    <link>https://mayar.abertay.ac.uk/~1704097/306/week5/view/displayArticle.php?ID=7</link>
+    <guid>unqiue id</guid>
+    <pubDate>Tue, 22 Sep 2018 16:45:00 +0000 </pubDate>
+  </item>
+  
+   <item>
+    <title>Ethical clothing 2019</title>
+    <description>Trends that have benefitted this industry</description>
+    <link>https://mayar.abertay.ac.uk/~1704097/306/week5/view/displayArticle.php?ID=11</link>
+    <guid>id three</guid>
+    <pubDate>Thu, 04 Mar 2019 16:45:00 +0000 </pubDate>
+  </item>
+  
+  <item>
+    <title>Celebrities Impact</title>
+    <description>Ethical or not?</description>
+    <link>https://mayar.abertay.ac.uk/~1704097/306/week5/view/displayArticle.php?ID=12</link>
+    <guid>id four</guid>
+    <pubDate>Mon, 06 Sep 2009 16:45:00 +0000 </pubDate>
+  </item>
+  
+  
+  
+</channel>
+</rss>

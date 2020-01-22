@@ -1,0 +1,37 @@
+Summary for week 8 – What you have built today is NOT a single program but a system. The task today is to document the system. Initially use a block diagram (Data-Flow diagram?) to show the individual processes in the system and the links between them. The processes are (1) the device (2) the agent (3) the PHP script. The start of the system is the data from the individual sensors. The finish is the database table. On this diagram clearly show the data that flows from one process to another. Add around 100 words to explain your diagram. The start of the data flow shows the electric imp that has sensors picking up 4 readings.
+
+Then device converts the 4 readings into a JSON object.
+local message = {
+"external" : c8Str ,
+"internal" : c9Str,
+ "light" : light,
+ "voltage" : voltage
+} ;
+
+The data flow diagram is located at this link: https://mayar.abertay.ac.uk/~1704097/306/week8/diagram.png
+Then the device sends the JSON object to the agent using a channel.
+agent.send("ch1", message);
+The agent receives the JSON object using device.on("ch1", log); 
+Then agent passes the data to the php web page using a post method.
+The PHP webpage receives the JSON object and passes it into a function that handles SQL related requests and adds the JSON data into the SQL database table using the insert function. This whole process is repeated every 20 seconds, therefore the database table receives new data accordingly.
+ 
+ 
+Show your database table design and indicate the advantage of storing the data as JSON in a single MySQL database has over a number of Relational Tables in 3NF. (100 words)
+Readings table design: 
+rid(primary key)
+eidevice
+datetime
+state(stores JSON object)
+Above you can see the design, where rid is the primary key, and the rest of the data is being added from the PHP webpage. The JSON object stores the 4 readings that will be added to the state column. The data that will be stored in the state might often have duplicate data inserted as the environment of the device that takes the data is not changing greatly. Therefore, if stored in 3NF a huge chunk of the data would be duplicated.
+Storing it in JSON makes it more flexible, as it stores the state and if one would want to add or take any sensor away the whole table would still be set up well, and one would not have to change the table design which is difficult once the design of the table has been set up.
+Take 100 words to indicate the correctness of your work.
+For this week's program I started with the same electricimp device I used last week. Yet the results started showing that the external temperature was -11 which could not have been possible, so I checked and whoever was using it before me plugged in the pins wrong. I fixed this and it started displaying more realistic temperatures. I could not measure whether the temperature was exactly correct, as all I had available was my phone thermometer which results would not be accurate as the phones own heat could intervene with the results; but the results I got from the device seemed realistic.
+ID: 232120b236a7c9ee Temperature: -11.3 Temperature2: 60.4 light: 61759 voltage: 3.284
+Above are the wrong values shown.
+To test the readings for the light variable, I covered the device with my hand, which outputted a lower light level, proving that the sensors were reacting to the outside environment.
+Not covered results: 
+{ "external": "27.5", "internal": "27.1", "light": 61422, "voltage": 3.279 }
+Once covered: 
+{ "external": "27.7", "internal": "27.1", "light": 29847, "voltage": 3.277 }
+
+

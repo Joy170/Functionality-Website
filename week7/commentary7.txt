@@ -1,0 +1,110 @@
+Summary for week 7 – You should document the final program involving 4 sensors collecting data.
+Final program: 
+source code
+// Read the internal and external temperature from a thermistor.
+ 
+// B57861S0103F040 NTC Thermistor with matched resistor
+ 
+id <- hardware.getdeviceid();
+ 
+// Configure Pin
+ 
+// thermistor connected to pin8(external) and pin9(internal)
+ 
+external <- hardware.pin8 ;
+ 
+external.configure(ANALOG_IN);
+ 
+internal <- hardware.pin9 ;
+ 
+internal.configure(ANALOG_IN);
+ 
+// Define the relevant constants for this thermister
+ 
+const aconst = 65535.0 ;
+ 
+const bconst = 3988;
+ 
+const t0const = 298.15;
+ 
+vconst <- hardware.voltage() ;
+ 
+// function to read the voltage and convert to degrees Centigrade
+ 
+function getTemp() {
+ 
+// read the value
+ 
+local v8 = external.read() ;
+ 
+local v9 = internal.read() ;
+ 
+// convert the voltage to temperature in centigrade.
+ 
+v8 = v8 * vconst / aconst ;
+ 
+v9 = v9 * vconst / aconst ;
+ 
+local r8 = 10000.0 / ( (vconst / v8) - 1);
+ 
+local r9 = 10000.0 / ( (vconst / v9) - 1);
+ 
+local ln8 = math.log(10000.0 / r8);
+ 
+local ln9 = math.log(10000.0 / r9);
+ 
+local t8 = (t0const * bconst) / (bconst - t0const * ln8) ;
+ 
+local t9 = (t0const * bconst) / (bconst - t0const * ln9) ;
+ 
+local t8 = t8 - 273.15 ;
+ 
+local t9 = t9 - 273.15 ;
+ 
+// send the value to the server log
+ 
+local c8Str = format("%.01f", t8) ;
+ 
+local c9Str = format("%.01f", t9) ;
+ 
+// send the values to the agent
+ 
+local message = {"device" : id ,
+ 
+"external" : c8Str ,
+ 
+"internal" : c9Str } ;
+local light = hardware.lightlevel();
+local voltage = hardware.voltage();
+ 
+server.log("ID: " + id + " Temperature: " + c8Str + " Temperature2: " + c9Str + " light: " + light + " voltage: " + voltage)
+// get the imp to sleep and wake up every 20 s
+ 
+imp.wakeup(20, getTemp);
+ 
+}
+ 
+getTemp() ;
+ 
+ A diagram may be useful as will the final program. Make sure you define correctly the values output in their correct units. Include the final printout if you can. (it is shown above)
+Outline how you tested your program – does it output the correct values?
+Specific code to output the sensors shown below: 
+server.log("ID: " + id + " Temperature: " + c8Str + " Temperature2: " + c9Str + " light: " + light + " voltage: " + voltage)
+The 4 sensors are as shown above: Temperature 1, Temperature 2, Light and voltage.
+Function below to create a variable called light, and be able to set it to the light level.
+local light = hardware.lightlevel();
+I tried to change the light value by covering the electric imp to limit the amount of light that it was exposed to. This made the light variables output change. 
+The electric imp having normal light exposure:
+ID: 232120b236a7c9ee Temperature: 24.9 Temperature2: 24.7 light: 62335 voltage: 3.284
+To the electric imp being partially covered: 
+ID: 232120b236a7c9ee Temperature: 25.1 Temperature2: 24.7 light: 33928 voltage: 3.279
+ID: 232120b236a7c9ee Temperature: 24.9 Temperature2: 24.7 light: 35800 voltage: 3.277
+As seen above the light decreases when being covered by my hands; which is what I expected to happen. This is how I tested the light sensor to the best of my knowledge.
+The original code given to me outputted information about the 4 sensors within a variable called message. When trying to output “message” the values for the 4 sensors would be displayed in HEX values, which was not ideal. 
+The server.log function printed the correct values to me when displaying it like above.
+I expect the temperature that has a higher value is the one under the glass, as this creates more heat, therefore temperature 1 is the thermistor further away from the board. Thermistor 2 outputs the values for Temperature 2 which seem to be slightly lower. 
+I tried to test if the temperature was correct; to do this I downloaded a thermometer on my phone. I was unsure if a thermometer on my phone would output similar values as a thermistor. Furthermore, the values I got on my phone seemed to be a lot higher, around 4 degrees Celsius higher, which did not seem correct in the environment I was in. Additionally, my phone used a thermometer that was probably inside my mobile phone, which also might have taken the phone's heat into consideration, causing the output of higher temperature values. Therefore, I deducted that this testing method was accurate. 
+The function shown below create a variable called voltage and  set it to the voltage level found.
+local voltage = hardware.voltage();
+I interpreted the variable voltage to be equal to the amount of electricity the board has access to at the moment it is being tested. 
+ 

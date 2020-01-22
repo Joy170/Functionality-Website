@@ -1,0 +1,38 @@
+Commentary Week2
+This week the focus is on Relational databases. For the critical appraisal / summary this week you need to:
+Write out the definition of all tables within your database from the tutorial including the items, images, articles, users and comments. For each attribute in a table give the datatype.
+Items table: 
+title(varchar)
+description(text)
+itemID(int)
+Images table: 
+imageID(int)
+imageSource(varchar)
+imageAlt(varchar)
+Article table:
+articleID(int)
+articleAuthor(varchar)
+articleText(text)
+articleImage(varchar)
+articleTitle(varchar)
+articleVideo(varchar)
+Users Table: 
+uno(int)
+firstname(varchar)
+surname(varchar)
+mobileno(int)
+email(varchar)
+password()varchar
+Comments table: 
+commentID(int)
+commentInput(varchar)
+articleID(int)
+userEmail(varchar)
+Give 3 examples, preferably related to the site, of issues with the relational database model.
+If changes need to be made to the design of database table, it is difficult to go back and change the structure of it. Changes after the structure of the database has been set are more difficult to make. I had difficulties doing this for the items table of week one, as I had the images in the items table included at first. This is why I made a separate images table for week 2 and therefore changed the initial items table from week 1.
+ I am including many items that are loaded according to their URL, like the images and videos. The data type storing the link to these images are videos are varchars which might not be the best way to store data if it were a bigger company. Also the article text has a limitation of 65,000 character, which is not going to be reached in my webpage, but might be a problem for other users.
+ 
+Lastly, it is complicated making tables when needing to link multiple tables. To keep it in 3NF multiple joins need to be created to access certain data which can become confusing and cause a lot of hassle. 
+ 
+Notes:
+My ERD is located at this link: https://mayar.abertay.ac.uk/~1704097/306/week2/ERD.jpg

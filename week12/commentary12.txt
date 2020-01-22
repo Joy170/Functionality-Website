@@ -1,0 +1,15 @@
+Commentary week 12:
+ 
+Comment the design of the REST Web Service that you have designed for your site and how you have concluded that it works. (200 words).
+ 
+To start of, I used the example code given to us and first checked to see if this worked. It did not, therefore I inserted my information into a PHP file that had the relevant information stored to connect to my database and I changed the query in the library file to select my items table. I created a page with different forms where a user can choose to get all items, get a specific item and insert an item into the database. I focused on working with the string return to make it readable as the JSON object that was decoded, was given to me in a huge chunk of code, which was not being properly displayed. Therefore, to display all items, the first step was to query and select all items from the database and then decode the string into a JSON object. Then I used a for each loop to iterate through all the items in this JSON object to output the information inside of it. A similar process was done to get a specific ID, there was no need to iterate through the array that contained the JSON object, as there is only one JSON object returned. In the form created, an ID has to be typed in which is linked to the ID found in the database, therefore only the item required will be outputted. 
+I have concluded that it works, as for the insert function when a user types into the forms that I have implemented, I can see the results being added into the database; and when a specific item wants to be seen or all items want to be seen the correct item/s displays. The request is linked to the file that stores all the SQL queries to the database. 
+ 
+There is a problem with design that I have suggested here namely there is no authentication. You really need to make sure only “accredited” users can access the REST Web Service. How would you alter the REST Web Service to ensure some level of authentication of the users of the service?
+ 
+In the previous practical’s we have made sure that only users logged in can comment on articles, while users not logged in were prevented from doing so Therefore you could check whether a user is logged in using session variables. Only if a user successfully logged in would they be able to see the form that would insert an item or search for an item. If there is no user logged in, it will show a message displaying that they are not allowed to access this process unless they are logged in successfully. A button will lead this person to a login page where once logged in successfully can then access the forms. 
+ 
+ 
+ 
+ 
+ 

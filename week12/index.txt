@@ -1,0 +1,15 @@
+These files are from the tutorial
+connection.php  -  file with the connection string
+employees.php - this is the big switch statement that picks the correct method
+                dependent on the access method
+library.php - the methods used to insert, get, updata , delete                
+
+Run these files in a browser to show how the REST Web Service works.
+delete_emp.php - this is the code to delete employee 67 (Can be changed)
+get_all_emp.php - this will deliver all the employees from the database
+get_emp.php - this will deliver  employee 66 (Can be changed)
+insert_emp.php - this will insert a new employee into the database.
+				change the data to change the values.
+update_emp.php - updates employee 68 (can be changed)
+				    
+

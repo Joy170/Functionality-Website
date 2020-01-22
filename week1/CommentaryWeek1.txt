@@ -1,0 +1,58 @@
+﻿Commentary week 1
+Tell me about yourself. I wish to find out what level of Web Development you are comfortable with. Please answer these few questions and I will come around the class and discuss your answers.
+ 
+1.   	I am happy writing HTML5 Web Sites.
+Yes
+ 
+ 
+ 
+2.   	I have used an HTML Framework (such as Bootstrap).
+ 
+Yes
+ 
+ 
+3.   	I am confident using PHP on a sever (not just Localhost) 
+ 
+Yes
+ 
+ 
+ 
+4.   	I am confident in using PHP to get data from a database / inserting data into a database
+Mostly
+ 
+ 
+ 
+ 
+ 
+ 
+5.   	I am confident in building a MySQL database using phpmyadmin on the server
+ 
+ 
+Mostly
+ 
+ 
+6.   	I am confident with data normalization.
+ 
+No
+ 
+ 
+ 
+7.   	Can you show the lecturer your “best” web page written to date?
+ 
+https://mayar.abertay.ac.uk/~1704097/coursework/
+ 
+Continued: 
+1.   	At the heart of any HTML5 frameworks is a grid system. Summarise the grid system you will use in Bootstrap.
+For the exercise in week one, the grid required was a 3x4 grid system. This means 3 columns in each row and a total of 4 rows.
+All the columns are evenly distributed; every column had the same size and held one items in a bootstrap card, there would be three bootstrap cards in each row.
+2.   	Menu systems are often a bind to get right especially if you want a multi-dropdown menu. In an ideal world you should write the HTML for a menu as a set of hierarchical un-numbered lists. Summarise how you will implement menus in your site using Bootstrap.
+The navigation will be located at the top of each webpage and contain a drop down for each week. The weeks will be clearly numbered in the navbar the dropdown will contain one link to the commentary and another one for the practical work.The navigation will be used from Bootstrap’s scroll spy which includes a burger menu. The burger menu will be responsive and decrease into 3 lines when the window is made smaller. If the burger menu button is clicked it will expand and show the 12 weeks.
+ 
+3.   	Pick out 5 further features, other than grid and menu, in Bootstrap that you think will be useful. Comment on their use. 
+Bootstrap functions help make the site responsive and mobile friendly, the columns and organization of items will fit according to the screen size of the device that the webpage is being viewed on. This feature is either included or easy to implement when using bootstrap.
+I will be using scroll spy for my navigation menu as the webpage could be viewed on tablets and larger screens; as well as mobile devices. Scroll spy is responsive and is an effective way to organize and include all the links desired for this module.
+The Bootstrap Dropdown menu will be used in the navigation. The arrow in this menu shows the user that it is a dropdown menu. The use of an arrow is very common, which makes it easy and clear to use and understand its function.
+I will use the bootstrap forms and store the information into my database. An example will be for registration where users will input their data and using SQL prepared statements, this info can be inserted safely into my database.
+Bootstrap will also assist with images and make sure they are responsive and adapt to the different devices it will be viewed on. The images will be within a bootstrap card and be size fitting, as well as using bootstrap image shapes, if required.
+The Basic Pagination in bootstrap might be useful, if there are huge amounts of texts’ there might be the need to add pagination which will ensure structure and organize the webpage in an understandable manner.
+The Bootstrap Pager with Previous and Next buttons could be added, which is a common button that most users will be accustomed to from other webpages.

@@ -1,0 +1,98 @@
+
+Result: 
+ID: 232120b236a7c9ee Temperature: 24.9 Temperature2: 24.7 light: 62335 voltage: 3.284
+
+
+source code
+// Read the internal and external temperature from a thermister.
+
+// B57861S0103F040 NTC Thermistor with matched resistor
+
+
+id <- hardware.getdeviceid();
+
+
+// Configure Pin
+
+// thermistor connected to pin8(external) and pin9(internal)
+
+external <- hardware.pin8 ;
+
+external.configure(ANALOG_IN);
+
+internal <- hardware.pin9 ;
+
+internal.configure(ANALOG_IN);
+
+
+// Define the relevant constants for this thermister
+
+const aconst = 65535.0 ;
+
+const bconst = 3988;
+
+const t0const = 298.15;
+
+vconst <- hardware.voltage() ;
+
+// function to read the voltage and convert to degrees Centigrade
+
+function getTemp() {
+
+// read the value
+
+local v8 = external.read() ;
+
+local v9 = internal.read() ;
+
+
+// convert the voltage to temperature in centigrade.
+
+v8 = v8 * vconst / aconst ;
+
+v9 = v9 * vconst / aconst ;
+
+local r8 = 10000.0 / ( (vconst / v8) - 1);
+
+local r9 = 10000.0 / ( (vconst / v9) - 1);
+
+local ln8 = math.log(10000.0 / r8);
+
+local ln9 = math.log(10000.0 / r9);
+
+local t8 = (t0const * bconst) / (bconst - t0const * ln8) ;
+
+local t9 = (t0const * bconst) / (bconst - t0const * ln9) ;
+
+local t8 = t8 - 273.15 ;
+
+local t9 = t9 - 273.15 ;
+
+
+// send the value to the server log
+
+local c8Str = format("%.01f", t8) ;
+
+local c9Str = format("%.01f", t9) ;
+
+
+// send the values to the agent
+
+local message = {"device" : id ,
+
+"external" : c8Str ,
+
+"internal" : c9Str } ;
+local light = hardware.lightlevel();
+local voltage = hardware.voltage();
+
+
+server.log("ID: " + id + " Temperature: " + c8Str + " Temperature2: " + c9Str + " light: " + light + " voltage: " + voltage)
+// get the imp to sleep and wake up every 20 s
+
+imp.wakeup(20, getTemp);
+
+}
+
+getTemp() ;
+
